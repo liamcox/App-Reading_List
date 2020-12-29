@@ -4,9 +4,13 @@ const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const db_url = process.env.DB_URL;
 
 const app = express();
+
+// allow cross-origin requests
+app.use(cors());
 
 mongoose.connect(db_url, {
     useNewUrlParser: true,
